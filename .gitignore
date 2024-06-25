@@ -397,3 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 local.settings.json
+/Properties/ServiceDependencies
+/Properties/serviceDependencies.anlc4-knight - Zip Deploy.json
