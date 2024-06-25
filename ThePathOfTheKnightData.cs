@@ -1,19 +1,14 @@
 ﻿using Microsoft.Azure.Cosmos;
-using Microsoft.Azure.WebJobs;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ThePathofKnight
 {
     public class ThePathOfTheKnightData
     {
-        private CosmosClient _client;
-        private Database _db;
-        private Container _ct;
+        private readonly CosmosClient _client;
+        private readonly Database _db;
+        private readonly Container _ct;
 
         public ThePathOfTheKnightData()
         {
@@ -33,13 +28,11 @@ namespace ThePathofKnight
             using FeedIterator<TheKnightPathRecord> feed = _ct.GetItemQueryIterator<TheKnightPathRecord>(
                 queryText: $"SELECT * FROM {Environment.GetEnvironmentVariable($"CosmosContainer")} p WHERE p.Starting='{Start.ToString()}' and p.Ending='{End.ToString()}' and p.IsDeleted=false"
             );
-
-            // Iterate query result pages
+            
             while (feed.HasMoreResults)
             {
                 FeedResponse<TheKnightPathRecord> response = await feed.ReadNextAsync();
 
-                // Iterate query results
                 foreach (TheKnightPathRecord item in response)
                 {
                         return item; 
@@ -54,13 +47,11 @@ namespace ThePathofKnight
             using FeedIterator<TheKnightPathRecord> feed = _ct.GetItemQueryIterator<TheKnightPathRecord>(
                 queryText: $"SELECT * FROM theknight1 p WHERE p.id='{Id}' and p.IsDeleted=false"
             );
-
-            // Iterate query result pages
+            
             while (feed.HasMoreResults)
             {
                 FeedResponse<TheKnightPathRecord> response = await feed.ReadNextAsync();
-
-                // Iterate query results
+                
                 foreach (TheKnightPathRecord item in response)
                 {
                     return item;

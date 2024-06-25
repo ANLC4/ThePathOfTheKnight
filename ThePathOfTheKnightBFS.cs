@@ -1,10 +1,7 @@
-﻿// https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
 using ThePathofKnight;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 using Microsoft.Azure.Cosmos.Spatial;
 
 public class ThePathOfTheKnightBFS : IThePathOfTheKnight
